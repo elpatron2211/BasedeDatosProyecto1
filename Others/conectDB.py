@@ -29,5 +29,5 @@ def connectCSV(direccion):
     return draftTable, draftCombineTable, GameTable, GameInactivePlayersTable, GameOfficialsTable,NewsMissingTable, NewsTable, PlayerAttributesTable, PlayerBiosTable, PlayerAttributesTable, PlayerTable, PlayerSalaryTable, TeamTable, TeamAttributesTable, TeamHistoryTable, TeamSalaryTable
 if __name__ == '__main__':
     cursor = connectDB()
+    arr = connectCSV()
     disconnectDB(cursor)
-

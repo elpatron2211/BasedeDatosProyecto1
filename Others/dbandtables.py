@@ -1,3 +1,4 @@
+#Creacion de tablas e insercion de datos
 import psycopg2
 conn= psycopg2.connect(
     database="proyecto01",
@@ -52,13 +53,33 @@ player='''Create Table Player(
    Reb Float,
    AllStarAppearances int
 );'''
-#Creando la tabla en la base de datos
+#Creando la tabla Player en la base de datos
 #cursor.execute(player)
 #print('Tabla Creada')
 #Ingreso de datos en tabla Player
 
 
 #Creacion de tabla Salary
+salary='''Create Table Salary(
+Season int primary key,
+Player_ID int references Player(Player_ID),
+Contract_Type varchar(10),
+Value INT
+);'''
+#Creando la tabla salario en la base de datos
+#cursor.execute(salary)
+#print('Tabla Creada')
+#Ingreso de datos en tabla Official
 
-#Clssing the connection
+
+
+#Creacion de tabla oficial
+oficial='''Create Table Official(
+Official_ID int primary key,
+Full_Name varchar(30)
+);
+'''
+#cursor.execute(oficial)
+#print('Tabla Creada')
+#Closing the connection
 conn.close()

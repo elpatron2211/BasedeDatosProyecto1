@@ -3,7 +3,7 @@ import psycopg2
 conn= psycopg2.connect(
     database="proyecto01",
     user='postgres',
-    password='hola123',
+    password='manager123',
     host='localhost',
     port='5432'
 )
@@ -26,8 +26,8 @@ Team='''CREATE TABLE Team(
     Arena varchar(30)
     );'''
 #Creando la tabla en la base de datos
-#cursor.execute(Team)
-#print('La tabla team fue creada exitosamente')
+cursor.execute(Team)
+print('La tabla team fue creada exitosamente')
 #Insertando el archivo csv en la tabla
 #Team='''Copy Team FROM
 #'C:\\Users\\raule\\Documents\\GitHub\\BasedeDatosProyecto1\\OthersTeams.csv'

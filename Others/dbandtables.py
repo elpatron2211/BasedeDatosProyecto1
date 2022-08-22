@@ -56,7 +56,7 @@ player='''Create Table Player(
 #Insertando archivo en la tabla Player
 player='''Copy Player FROM
 'C:\\Users\\raule\\Documents\\GitHub\\BasedeDatosProyecto1\\Others\\PlayerTable.csv'
-DELIMITER ',' CSV HEADER'''
+DELIMITER ',' CSV HEADER;'''
 #Creando la tabla Player en la base de datos
 cursor.execute(player)
 print('Informacion insertada')

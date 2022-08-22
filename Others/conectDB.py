@@ -34,35 +34,22 @@ if __name__ == '__main__':
     GameOfficialsTable = GameOfficialsTable.drop_duplicates(subset=['OFFICIAL_ID'])
     GameOfficialsTable['Full_Name'] = GameOfficialsTable['FIRST_NAME']+' '+GameOfficialsTable['LAST_NAME']
     Officials = pd.DataFrame().assign(Official_ID = GameOfficialsTable['OFFICIAL_ID'], Full_Name = GameOfficialsTable['Full_Name'])
-    
     Match = pd.DataFrame().assign(Game_ID = GameTable['GAME_ID'], Season = GameTable['SEASON'], Game_Date = GameTable['GAME_DATE'], Visitor_ID = GameTable['VISITOR_TEAM_ID'], Home_ID = GameTable['HOME_TEAM_ID'], Attendance = GameTable['ATTENDANCE'], Home_Pts = GameTable['PTS_HOME'], Home_WL = GameTable['WL_HOME'], FGM_Home = GameTable['FGM_HOME'], FGA_Home = GameTable['FGA_HOME'], FG_PCT_Home = GameTable['FG_PCT_HOME'], OREB_Home = GameTable['OREB_HOME'], DREB_Home = GameTable['DREB_HOME'], REB_Home = GameTable['REB_HOME'], AST_Home = GameTable['AST_HOME'], BLK_Home = GameTable['BLK_HOME'], TOV_Home = GameTable['TOV_HOME'], PF_Home = GameTable['PF_HOME'], Plus_Minus_Home = GameTable['PLUS_MINUS_HOME'], Visitor_Pts = GameTable['PTS_AWAY'], Visitor_WL = GameTable['WL_AWAY'], FGM_Visitor = GameTable['FGM_AWAY'], FGA_Visitor = GameTable['FGA_AWAY'], FG_PCT_Visitor = GameTable['FG_PCT_AWAY'], OREB_Visitor = GameTable['OREB_AWAY'], DREB_VISITOR = GameTable['DREB_AWAY'], REB_Visitor = GameTable['REB_AWAY'], AST_Visitor = GameTable['AST_AWAY'], BLK_Visitor = GameTable['BLK_AWAY'], TOV_Visitor = GameTable['TOV_AWAY'], PF_Visitor = GameTable['PF_AWAY'], Plus_Minus_Visitor = GameTable['PLUS_MINUS_AWAY'])
     vacio = [NULL]*len(Match)
     Match['Official_ID_1']=vacio
     Match['Official_ID_2']=vacio
     Match['Official_ID_3']=vacio
-    # print(CopyGameOfficialsTable.groupby("GAME_ID"))
     GameOfficials = pd.DataFrame().assign(First_Name = (CopyGameOfficialsTable.groupby(["GAME_ID"])["OFFICIAL_ID"]))
-    print(Match.index[Match['Game_ID']==22001077].tolist()[0])
     for x in range(len(GameOfficials)):
         try:
-            # index = int(Match.index[Match['Game_ID'] == GameOfficials.loc[x][0][0]].tolist()[0])
-            print(Match['Game_ID'] == GameOfficials.loc[x][0][0])
-            # Match.loc[index][46] = str(GameOfficials.loc[x][0][1].iloc[0])
-            # Match.loc[index][47] = str(GameOfficials.loc[x][0][1].iloc[1])
-            # Match.loc[index][48] = str(GameOfficials.loc[x][0][1].iloc[2])
+            index = int(Match.index[Match['Game_ID'] == GameOfficials.loc[x][0][0]].tolist()[0])
+            Match['Official_ID_1'][index] = str(GameOfficials.loc[x][0][1].iloc[0])
+            Match['Official_ID_2'][index] = str(GameOfficials.loc[x][0][1].iloc[1])
+            Match['Official_ID_3'][index] = str(GameOfficials.loc[x][0][1].iloc[2])
         except:
             pass
-    # print(Match.loc[Match.index[Match['Game_ID'] == '29600059' ].tolist() ])
-    # for x in range(len(GameOfficials)):
-    #     try:
-    #         Match.loc[]
-    #     GameID.append(str(GameOfficials.loc[x][0][0]))
-    #     Of1.append(str(GameOfficials.loc[x][0][1].iloc[0]))
-    #     Of2.append(str(GameOfficials.loc[x][0][1].iloc[1]))
-    #     try:
-    #         Of3.append(str(GameOfficials.loc[x][0][1].iloc[2]))
-    #     except:
-    #         Of3.append(NULL)
-    
     print(Match)
     disconnectDB(cursor)
+Player.to_csv('PlayerTable.csv')
+Officials.to_csv('OfficialsTable.csv')
+Match.to_csv('MatchTable.csv')

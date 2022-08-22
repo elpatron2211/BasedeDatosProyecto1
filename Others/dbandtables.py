@@ -69,7 +69,7 @@ Value INT
 #Creando la tabla salario en la base de datos
 #cursor.execute(salary)
 #print('Tabla Creada')
-#Ingreso de datos en tabla Official
+#Ingreso de datos en tabla Salary
 
 
 
@@ -82,4 +82,6 @@ Full_Name varchar(30)
 #cursor.execute(oficial)
 #print('Tabla Creada')
 #Closing the connection
+#Ingreso de datos en Official
+
 conn.close()

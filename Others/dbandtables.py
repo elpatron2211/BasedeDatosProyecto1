@@ -29,9 +29,9 @@ Team='''CREATE TABLE Team(
 #cursor.execute(Team)
 #print('La tabla team fue creada exitosamente')
 #Insertando el archivo csv en la tabla
-Team='''Copy Team FROM
-'C:\\Users\\raule\\Desktop\\CuartoSemestre2022\\BasedeDatos\\Proyecto1\\Archivos\\Teams.csv'
-DELIMITER ',' CSV HEADER'''
+#Team='''Copy Team FROM
+#'C:\\Users\\raule\\Documents\\GitHub\\BasedeDatosProyecto1\\OthersTeams.csv'
+#DELIMITER ',' CSV HEADER'''
 #Ejecutando
 #cursor.execute(Team)
 #print('Insertando los datos')
@@ -53,12 +53,13 @@ player='''Create Table Player(
    Reb Float,
    AllStarAppearances int
 );'''
+#Insertando archivo en la tabla Player
+player='''Copy Player FROM
+'C:\\Users\\raule\\Documents\\GitHub\\BasedeDatosProyecto1\\Others\\PlayerTable.csv'
+DELIMITER ',' CSV HEADER'''
 #Creando la tabla Player en la base de datos
-#cursor.execute(player)
-#print('Tabla Creada')
-#Ingreso de datos en tabla Player
-
-
+cursor.execute(player)
+print('Informacion insertada')
 #Creacion de tabla Salary
 salary='''Create Table Salary(
 Season int primary key,

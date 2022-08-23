@@ -65,7 +65,8 @@ player='''Create Table if not exists Player(
    Pts FLOAT,
    Ast FLOAT,
    Reb FLOAT,
-   AllStarAppearances FLOAT
+   AllStarAppearances FLOAT,
+   StatusPlayer VARCHAR(10)
 );
 '''
 #Creando la tabla Player en la base de datos
